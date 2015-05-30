@@ -1,0 +1,17 @@
+.DS_Store
+/Misc
+*.log
+result
+/target
+.settings/
+.project
+.classpath
+.externalToolBuilders/
+/bin
+*.iml
+*.ipr
+*.iws
+*.ids
+target
+.idea
+data/db.neo4j/
