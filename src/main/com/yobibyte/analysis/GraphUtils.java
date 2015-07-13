@@ -9,7 +9,7 @@ import java.util.Stack;
 
 public class GraphUtils {
 
-    static Logger log = Logger.getLogger(GraphUtils.class.getName());
+    private static Logger log = Logger.getLogger(GraphUtils.class.getName());
 
     public static List<Integer> getAdjacentVertices(int forWhom, int[][] adjacencyMatrix) {
         List<Integer> res = new ArrayList<>();

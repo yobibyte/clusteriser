@@ -90,7 +90,6 @@ public class Util {
         return false;
     }
 
-
     public static int getLetterCount(String str, boolean isLowercase) {
         int ctr = 0;
         for(char c : str.toCharArray()) {

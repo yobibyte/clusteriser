@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 
 public class Launcher {
 
-    static Logger log = Logger.getLogger(Launcher.class.getName());
+    private static Logger log = Logger.getLogger(Launcher.class.getName());
 
 	public static void main(String args[]) {
 		Long stTime = System.currentTimeMillis();
@@ -13,7 +13,7 @@ public class Launcher {
 
 		CommandLineParser clp = new CommandLineParser(args);
 		clp.getParams();
-        DataAnalyser.makeCycle();
+        DataAnalyser.mainLoop();
 
         log.info("Check the result. I've finished.");
         Long endTime = System.currentTimeMillis();

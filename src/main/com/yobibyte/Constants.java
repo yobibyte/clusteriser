@@ -5,7 +5,6 @@ import com.yobibyte.analysis.CompressedAlphabet;
 import java.util.Map;
 
 public class Constants {
-	public static Integer GAP_IN_PERCENT = 10;
     public static Integer GAP_IN_CHARS = 50;
     public static boolean IS_GAP_IN_PERCENT = false;
 	public static double SIMILARITY_THRESHOLD = 0.4d;

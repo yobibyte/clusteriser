@@ -4,11 +4,8 @@ import com.yobibyte.structures.Fasta;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Transaction;
-import org.neo4j.graphdb.index.Index;
 import org.neo4j.graphdb.index.ReadableIndex;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -16,7 +13,6 @@ import java.util.List;
  */
 public class DbHelper {
     private static GraphDatabaseService db;
-
     static {
         db = ParamHolder.getInstance().getDb();
     }
@@ -38,12 +34,9 @@ public class DbHelper {
     public static List<Fasta> getAllNodes() {
         List<Fasta> res = new ArrayList<>();
         Transaction tx = db.beginTx();
-        Iterator<Node> it = db.getAllNodes().iterator();
-        while(it.hasNext()) {
-            Node n = it.next();
+        for (Node n : db.getAllNodes()) {
             res.add(nodeToFasta(n));
         }
-
         tx.success();
         return res;
     }
@@ -58,7 +51,7 @@ public class DbHelper {
         tx.success();
     }
 
-    public static Fasta nodeToFasta(Node n) {
+    private static Fasta nodeToFasta(Node n) {
         Fasta f = new Fasta();
         f.setId((Integer) n.getProperty("custom_id"));
         f.setGeneralInfo((String) n.getProperty("general_info"));
@@ -66,6 +59,5 @@ public class DbHelper {
         f.setProteins(s);
         return f;
     }
-
 
 }

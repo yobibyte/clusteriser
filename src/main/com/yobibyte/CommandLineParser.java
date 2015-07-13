@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class CommandLineParser {
 
-    Logger log = Logger.getLogger(CommandLineParser.class.getName());
+    private Logger log = Logger.getLogger(CommandLineParser.class.getName());
 
 	private Option _gap;
     private Option isGapInPercent;

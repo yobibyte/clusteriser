@@ -15,7 +15,11 @@ import java.util.Map;
 
 public class FileIO {
 
-    Logger log = Logger.getLogger(FileIO.class.getName());
+    private static Logger log;
+
+    static {
+        log = Logger.getLogger(FileIO.class.getName());
+    }
 
     public static void aggregateRepsFile(boolean isOrig) {
 
@@ -114,7 +118,7 @@ public class FileIO {
 		}
 	}
 
-    public void writeToFileByClusters(String groupName, List<int[]> clusters, List<Fasta> sequences, boolean isMisc, boolean isOrig) {
+    public static void writeToFileByClusters(String groupName, List<int[]> clusters, List<Fasta> sequences, boolean isMisc, boolean isOrig) {
         int numOfFiles = clusters.size();
         List<Fasta> toWrite = new ArrayList<>();
 
@@ -183,7 +187,7 @@ public class FileIO {
     }
 
 
-	public Map<Character, String> parseCompressedAlphabetFromFile(String filepath) {
+	public static Map<Character, String> parseCompressedAlphabetFromFile(String filepath) {
 		File fileToRead = new File(filepath);
 		Map<Character, String> toReturn = new HashMap<>();
 		

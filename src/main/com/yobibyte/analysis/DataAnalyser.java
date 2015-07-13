@@ -18,10 +18,10 @@ import java.util.List;
 
 public class DataAnalyser {
 
-    static Logger log = Logger.getLogger(Data.class.getName());
-    static ParamHolder ph = ParamHolder.getInstance();
+    private static Logger log = Logger.getLogger(Data.class.getName());
+    private static ParamHolder ph = ParamHolder.getInstance();
 
-    public static void makeCycle() {
+    public static void mainLoop() {
         FastaParser parser = new FastaParser();
         parser.parse(ph.getFilepath());
 
@@ -39,8 +39,7 @@ public class DataAnalyser {
             for (Fasta fasta : res.getCluster()) {
                 fasta.setProteins(fasta.getProteins().replaceAll("[a-z]", "-"));
             }
-            //remove gaps before second length clustering
-            //Otherwise we just have NS_NS, FS_FS and NE_NE clusters
+            //remove gaps before second length clustering. Otherwise we just have NS_NS, FS_FS and NE_NE clusters
             Util.removeGaps(res.getCluster());
             secondLenResult.addAll(clusterByLengthByGapValue(res.getCluster(), res.getType(), ph.getGapInChars(), false));
         }
@@ -71,12 +70,10 @@ public class DataAnalyser {
             clusters = formMiscCluster(clusters);
         }
         log.info("Writing results to files...");
-		FileIO fileIo = new FileIO();
-		fileIo.writeToFileByClusters(groupName, clusters, sequences, isMisc, false);
-        fileIo.writeToFileByClusters(groupName, clusters, sequences, isMisc, true);
+		FileIO.writeToFileByClusters(groupName, clusters, sequences, isMisc, false);
+        FileIO.writeToFileByClusters(groupName, clusters, sequences, isMisc, true);
 		getMostPopularParts(clusters, adjMatrix, groupName, sequences, isMisc, false);
         getMostPopularParts(clusters, adjMatrix, groupName, sequences, isMisc,  true);
-
         FileIO.makePopularStatFile(sequences, groupName);
 	}
 
@@ -96,7 +93,7 @@ public class DataAnalyser {
 		return adjMatrix;
 	}
 
-    public static List<int[]> formMiscCluster(final List<int[]> clusters) {
+    private static List<int[]> formMiscCluster(final List<int[]> clusters) {
 
         List<int[]> toSort = new ArrayList<>();
 
@@ -195,17 +192,14 @@ public class DataAnalyser {
             }
         }
 
-		FileIO fileIo = new FileIO();
-		fileIo.writeToFile("mostPopularParts_" + groupName + ".fasta", aggregatedString, isOrig);
+        FileIO.writeToFile("mostPopularParts_" + groupName + ".fasta", aggregatedString, isOrig);
 	}
 
-    public static List<LenClusteringResult> clusterByLengthByGapValue(List<Fasta> data, String groupName, Integer gap, boolean withLowercase) {
+    private static List<LenClusteringResult> clusterByLengthByGapValue(List<Fasta> data, String groupName, Integer gap, boolean withLowercase) {
 
         List<Fasta> wsList = new ArrayList<>();
         List<Fasta> weList = new ArrayList<>();
         List<Fasta> fsList = new ArrayList<>();
-
-        ParamHolder ph = ParamHolder.getInstance();
 
         if(gap == null) {
             gap = ph.getGapInChars();
