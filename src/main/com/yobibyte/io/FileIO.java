@@ -65,10 +65,8 @@ public class FileIO {
 
                 //prot is divided into three parts - from first small to first big, from first big
                 //to last big, from last big to last small - A,B,C
-                String tmp;
-                int aLowerNum = 0;
-                tmp = prot.substring(firstAlphaId, leftUpperAlphaId + 1);
-                aLowerNum = Util.getLetterCount(tmp, true);
+                String tmp = prot.substring(firstAlphaId, leftUpperAlphaId + 1);
+                int aLowerNum = Util.getLetterCount(tmp, true);
 
                 int cLowerNum = 0;
                 int bLowerNum = 0;

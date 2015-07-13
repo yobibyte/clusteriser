@@ -12,13 +12,8 @@ import java.util.Scanner;
 
 public class FastaParser {
 
-    private static GraphDatabaseService db;
-
-    static {
-        db = ParamHolder.getInstance().getDb();
-    }
-
     public void parse(String filepath) {
+        GraphDatabaseService db = ParamHolder.getInstance().getDb();
         try {
             Scanner sc = new Scanner(new File(filepath));
 

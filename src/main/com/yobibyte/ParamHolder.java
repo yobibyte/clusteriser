@@ -116,10 +116,6 @@ public class ParamHolder {
 	public File getResultFolder() {
 		return this.resultFolder;
 	}
-	
-	public void setResultFolder(File resultFolder) {
-		this.resultFolder = resultFolder;
-	}
 
     public Integer getGapInChars() {
         return gapInChars;
@@ -127,18 +123,6 @@ public class ParamHolder {
 
     public void setGapInChars(Integer gapInChars) {
         this.gapInChars = gapInChars;
-    }
-
-    public boolean isGapInPercent() {
-        return isGapInPercent;
-    }
-
-    public void setGapInPercent(boolean isGapInPercent) {
-        this.isGapInPercent = isGapInPercent;
-    }
-
-    public int getAlignmentLen() {
-        return alignmentLen;
     }
 
     public void setAlignmentLen(int alignmentLen) {
@@ -158,10 +142,6 @@ public class ParamHolder {
 
     public GraphDatabaseService getDb() {
         return db;
-    }
-
-    public int getInputSize() {
-        return inputSize;
     }
 
     public void setInputSize(int inputSize) {
