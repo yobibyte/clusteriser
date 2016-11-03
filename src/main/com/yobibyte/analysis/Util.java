@@ -25,7 +25,6 @@ public class Util {
         SIMILARITY_THRESHOLD = ph.getSimilarityCoefficient();
     }
 
-
     // COMPRESSED ALPHABET
     public static boolean isSimilar(final String seq1, final String seq2) {
         // Here we iterate for full length even including non-letter chars
@@ -44,8 +43,7 @@ public class Util {
                 numOfBingo++;
             }
         }
-        double simCoeff = ((double) numOfBingo) / realLen;
-        return simCoeff > SIMILARITY_THRESHOLD;
+        return ((double) numOfBingo) / realLen > SIMILARITY_THRESHOLD;
     }
 
     /*
@@ -139,7 +137,7 @@ public class Util {
         }
 
         if(!fromLeftToRight) {
-            ind = str.length() - ind;
+            ind = str.length() - 1 - ind;
         }
         return ind;
     }

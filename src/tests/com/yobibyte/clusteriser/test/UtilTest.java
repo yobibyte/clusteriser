@@ -74,8 +74,8 @@ public class UtilTest extends Assert {
     public void testGetAlphaIndex() {
         assertEquals(2, Util.getAlphaIndex("--aA", true, true, true));
         assertEquals(3, Util.getAlphaIndex("--aA", true, false, true));
-        assertEquals(3, Util.getAlphaIndex("--aA", true, true, false));
-        assertEquals(4, Util.getAlphaIndex("--aA", false, false, false));
+        assertEquals(2, Util.getAlphaIndex("--aA", true, true, false));
+        assertEquals(3, Util.getAlphaIndex("--aA", false, false, false));
     }
 
     @Test
